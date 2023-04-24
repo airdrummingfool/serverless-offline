@@ -284,8 +284,9 @@ export default function createAuthScheme(authorizerOptions, provider, lambda) {
       'g',
     )
 
+    const identitySourceString = Array.isArray(authorizerOptions.identitySource) ? authorizerOptions.identitySource.join(',') : authorizerOptions.identitySource
     const identitySourceMatches =
-      authorizerOptions.identitySource.matchAll(identitySourceRegExp)
+      identitySourceString.matchAll(identitySourceRegExp)
 
     const typesAndFields = []
     for (const match of identitySourceMatches) {
